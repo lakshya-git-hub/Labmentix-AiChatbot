@@ -75,7 +75,7 @@ export function formatMessageTime(timestamp: Date): string {
 // Generate AI response using Gemini API via backend proxy
 export async function generateAIResponse(userMessage: string): Promise<string> {
   try {
-    const response = await fetch("http://localhost:5000/api/gemini", {
+    const response = await fetch("https://labmentix-aichatbot.onrender.com/api/gemini", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
