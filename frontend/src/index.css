@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.75rem;
+
+    /* Modern Chatbot Theme Variables */
+    --chat-bg: 240 10% 3.9%;
+    --chat-panel: 240 5% 8%;
+    --chat-bubble-user: 262 83% 58%;
+    --chat-bubble-ai: 240 5% 11%;
+    --chat-bubble-user-text: 0 0% 100%;
+    --chat-bubble-ai-text: 0 0% 95%;
+    --chat-input-bg: 240 5% 8%;
+    --chat-input-border: 240 6% 16%;
+
+    /* Gradient colors for modern effects */
+    --gradient-from: 262 83% 58%;
+    --gradient-via: 268 100% 74%;
+    --gradient-to: 279 100% 65%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    /* Light mode chatbot colors */
+    --chat-bg: 0 0% 98%;
+    --chat-panel: 0 0% 100%;
+    --chat-bubble-user: 262 83% 58%;
+    --chat-bubble-ai: 240 5% 96%;
+    --chat-bubble-user-text: 0 0% 100%;
+    --chat-bubble-ai-text: 240 10% 3.9%;
+    --chat-input-bg: 0 0% 100%;
+    --chat-input-border: 240 5.9% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+
+@layer utilities {
+  .chat-message-enter {
+    @apply animate-fade-in;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:rounded-lg before:p-[1px] before:bg-gradient-to-r before:from-gradient-from before:via-gradient-via before:to-gradient-to before:-z-10;
+  }
+}
+
+/* Custom scrollbar for chat */
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 2px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-foreground));
+}
+
+/* Typing indicator animation */
+.typing-indicator {
+  @apply flex space-x-1;
+}
+
+.typing-indicator span {
+  @apply w-2 h-2 bg-muted-foreground rounded-full animate-pulse-soft;
+  animation-delay: calc(var(--delay) * 0.2s);
+}
