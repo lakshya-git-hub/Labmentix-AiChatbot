@@ -4,6 +4,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// New root route to confirm backend is running
+app.get('/', (req, res) => {
+  res.send('Gemini backend proxy is running!');
+});
+
 app.post('/api/gemini', async (req, res) => {
   const { text } = req.body;
   console.log('Received request for Gemini API with text:', text);
